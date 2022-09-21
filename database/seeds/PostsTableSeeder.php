@@ -3,7 +3,9 @@
 use Illuminate\Database\Seeder;
 use Faker\Generator as Faker;
 use App\Models\Post;
+use App\User;
 class PostsTableSeeder extends Seeder
+
 
 {
     /**
@@ -12,15 +14,18 @@ class PostsTableSeeder extends Seeder
      * @return void
      */
     public function run(Faker $faker)
-    {
-        for ($i=0; $i < 10 ; $i++) { 
-            $newPost= new Post();
-            $newPost->author = $faker->realText(30);
-            $newPost->title = $faker->realText();
-            $newPost->post_content = $faker->realText();
-            $newPost->post_image = $faker->imageUrl(30);
-            $newPost->post_date = $faker->dateTime();
-            $newPost->save();
+    {   
+        $Users=User::all();
+        foreach($Users as $user){
+            for ($i=0; $i < 10 ; $i++) { 
+                $newPost= new Post();
+                $newPost->user_id =$user->id;
+                $newPost->title = $faker->realText(40);
+                $newPost->post_content = $faker->realText();
+                $newPost->post_image = $faker->imageUrl(30);
+                $newPost->post_date = $faker->dateTime();
+                $newPost->save();
+            }
         }
     }
 }
