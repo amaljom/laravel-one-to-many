@@ -89,7 +89,7 @@ class PostController extends Controller
         $post->post_image = $data['post_image'];
         $post->post_date = $data['post_date'];
             
-        $newPost->save();
+        $post->save();
 
         return redirect()->route('admin.posts.show', $post->id)->with('edited', $post->title);
     }
