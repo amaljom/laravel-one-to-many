@@ -25,7 +25,7 @@
         @foreach($posts as $post)
             <tr>
                 <th scope="row">{{ $post->id }}</th>
-                <td>{{ $post->author }}</td>
+                <td>{{ $post-> user->name }}</td>
                 <td>{{ $post->title }}</td>
                 <td>{{ $post->post_content }}</td>
                 <td>{{ $post->post_image }}</td>
